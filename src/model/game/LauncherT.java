@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
+import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -37,12 +38,23 @@ public class LauncherT {
 	public static boolean get1fromCemetry = false ;
 	public static boolean brk = false ;
 	
-	public static void main(String[]args) throws UnallowedMovementException, OccupiedCellException, WrongTurnException, InterruptedException {
+	public static void main(String[]args) throws UnallowedMovementException, OccupiedCellException, WrongTurnException, InterruptedException, UnsupportedAudioFileException, IOException, LineUnavailableException {
 	
 		
 		
 		Game g = new Game(new Player("Player1"),new Player("Player2")) ;
 		g.getDisplay().ShowGameorMenu("menu");                           //Showing Menu till giving names
+		
+		Thread.sleep(500);
+		AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File("res/music/DesiJourney.wav"));  
+		Clip clip = AudioSystem.getClip();
+		AudioInputStream audioIn2 = AudioSystem.getAudioInputStream(new File("res/music/cheering.wav"));  
+		Clip clip2 = AudioSystem.getClip();
+		clip.open(audioIn);
+        clip.loop(Clip.LOOP_CONTINUOUSLY);    //play music
+        Thread.sleep(1000);
+
+		
 		while(true) {
 			if(!((MenuT) g.getDisplay().getMenuPanel()).isShowing()) {
 				break ;
@@ -52,6 +64,7 @@ public class LauncherT {
 		g.getDisplay().ShowGameorMenu("game");                           //Showing Game 
 		g.render();
 		
+
 		
 		for(JButton x: g.getP1cemetryButs()) {
 			x.addActionListener(new ActionListener() {
@@ -296,6 +309,10 @@ public class LauncherT {
 			}
 		}
 		
+		clip.stop();
+		Thread.sleep(100);
+		clip2.open(audioIn2);   //cheering
+		clip2.start();
 		
 		DebugGraphics dg = new DebugGraphics();
 		DebugGraphics.setFlashColor(Color.YELLOW);
