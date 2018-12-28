@@ -1,4 +1,4 @@
-# SuperHeroChessGame
+# SuperHeroChessGame  👽 
 
 Super Hero Chess is a chess-like board game. pieces are characters that have some special powers instead of the special moves of the ordinary chess.
 This java-based game was a project i did in my university to apply what i learnt about OOP concepts, i also added some additional features that i will mention in Contents.
