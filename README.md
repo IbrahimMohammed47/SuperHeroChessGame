@@ -6,7 +6,7 @@ This java-based game was a project i did in my university to apply what i learnt
 ## Who is this game for 
   - For anyone who wants to learn about OOP. 
   - For anyone who might find this game fun (which i clearly doubt).
-  - For my future employer who will accept my resume when he/she this project XD.
+  - For my future employer who will accept my resume when he/she sees this project XD.
   
 ## Contents
   - OOP concepts (Inheritance - Polymorphism - Abstraction - Encapsulation ).
